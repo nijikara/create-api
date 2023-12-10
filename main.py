@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+# main.py
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 app = FastAPI()
@@ -8,16 +9,13 @@ class Item(BaseModel):
     price: float
 
 @app.get("/")
-async def root():
+async def read_root():
     return {"message": "Hello World"}
 
-
 @app.get("/items/{item_id}")
-def read_item(item_id: int, q: str = None):
-    if q:
-        return {"item_id": item_id, "q": q}
-    return {"item_id": item_id}
+async def read_item(item_id: int, q: str = None):
+    return {"item_id": item_id, "q": q}
 
 @app.post("/items")
-def update_item(item: Item):
-    return {"item_name": item.name, "twice price": item.price * 2}
+async def create_item(item: Item):
+    return {"item_name": item.name, "twice_price": item.price * 2}
