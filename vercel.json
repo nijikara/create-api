@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/main.py": {
+      "api": {
         "runtime": "vercel-python@0.8.0"
       }
     }
