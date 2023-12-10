@@ -1,0 +1,10 @@
+{
+    "functions": {
+      "api/main": {
+        "runtime": "vercel-python@3.8",
+        "handler": "main.app",
+        "includeFiles": ["main.py"]
+      }
+    }
+  }
+  
